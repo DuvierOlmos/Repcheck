@@ -13,6 +13,7 @@ function AdminApp() {
         element={
           <ProtectedRoute requiredRole={2}> {/* id_rol=2 es administrador según el mapeo de App.js */}
             <AppRoutes />
+            
           </ProtectedRoute>
         }
       />
