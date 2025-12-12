@@ -19,7 +19,7 @@ const Catalogo = () => {
   const isAuthenticated = !!localStorage.getItem("user");
   const user = isAuthenticated ? JSON.parse(localStorage.getItem("user")) : null;
 
-  // Usar el contexto del carrito y notificaciones
+
   const { agregarAlCarrito } = useCarrito();
   const { addNotification } = useNotification();
 
@@ -51,7 +51,7 @@ const Catalogo = () => {
       });
   }, []);
 
-  // Función para agregar producto al carrito CON NOTIFICACIONES
+
   const handleAddToCart = async (productId) => {
     console.log('🛒 Iniciando handleAddToCart para producto:', productId);
 
@@ -61,21 +61,21 @@ const Catalogo = () => {
       return;
     }
 
-    // Verificar si el usuario es cliente
+
     if (user.id_rol !== 1) {
       addNotification('Solo los clientes pueden agregar productos al carrito', 'warning');
       return;
     }
 
-    console.log('👤 Usuario válido:', user.nombre_usuario);
+    console.log(' Usuario válido:', user.nombre_usuario);
     setAddingToCart(prev => ({ ...prev, [productId]: true }));
 
     try {
       console.log('🔄 Llamando a agregarAlCarrito...');
-      // Usar la función del contexto del carrito
+
       await agregarAlCarrito(productId, 1);
 
-      // Mostrar notificación de éxito
+
       const product = products.find(p => p.id_producto === productId);
       addNotification(`¡${product?.nombre_producto} agregado al carrito correctamente!`, 'success');
       console.log(' Producto agregado exitosamente');
@@ -86,32 +86,32 @@ const Catalogo = () => {
       let errorMessage = "Error inesperado al agregar al carrito";
 
       if (error.response) {
-        // Error del servidor
+
         errorMessage = error.response.data?.error || errorMessage;
-        console.error('📊 Detalles del error del servidor:', error.response.data);
+        console.error(' Detalles del error del servidor:', error.response.data);
       } else if (error.request) {
-        // Error de conexión
+
         errorMessage = "Error de conexión. Por favor, verifica tu internet.";
-        console.error('🌐 Error de conexión:', error.request);
+        console.error(' Error de conexión:', error.request);
       } else if (error.message) {
-        // Error del contexto
+
         errorMessage = error.message;
         console.error('💬 Mensaje de error:', error.message);
       }
 
-      // Mostrar notificación de error
+
       addNotification(errorMessage, 'error');
     } finally {
       setAddingToCart(prev => ({ ...prev, [productId]: false }));
     }
   };
 
-  // Función para ver producto
+
   const handleViewProduct = (productId) => {
     navigate(`/producto/${productId}`);
   };
 
-  // Filtrar productos basado en la búsqueda
+
   const filteredProducts = products.filter(product =>
     product.nombre_producto?.toLowerCase().includes(search.toLowerCase()) ||
     product.descripcion_producto?.toLowerCase().includes(search.toLowerCase()) ||
@@ -154,7 +154,7 @@ const Catalogo = () => {
       <SearchBar onSearch={setSearch} />
 
       <main className="catalogo-container">
-        {/* Información de resultados */}
+
         <div className="catalogo-info-bar">
           <span className="catalogo-product-count">
             {filteredProducts.length} producto{filteredProducts.length !== 1 ? 's' : ''} encontrado{filteredProducts.length !== 1 ? 's' : ''}
@@ -221,7 +221,7 @@ const Catalogo = () => {
           </div>
         )}
 
-        {/* Botón volver */}
+
         <section className="catalogo-volver-container">
           <button className="catalogo-volver-btn" onClick={() => navigate(-1)}>
             <FaArrowLeft style={{ marginRight: "8px" }} />

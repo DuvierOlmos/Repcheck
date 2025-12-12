@@ -12,7 +12,7 @@ const authHeaders = () => ({
 });
 
 // =======================================================
-// 📦 Reporte de Productos Registrados
+//  Reporte de Productos Registrados
 // =======================================================
 export const getReporteProductos = async (format = 'json') => {
   try {
@@ -20,7 +20,7 @@ export const getReporteProductos = async (format = 'json') => {
     const response = await axios.get(url, authHeaders());
     return response.data;
   } catch (error) {
-    console.error("❌ Error al obtener reporte de productos:", error);
+    console.error(" Error al obtener reporte de productos:", error);
     if (error.response?.status === 401)
       throw new Error("Token inválido o expirado. Inicia sesión nuevamente.");
     throw error;
@@ -28,7 +28,7 @@ export const getReporteProductos = async (format = 'json') => {
 };
 
 // =======================================================
-// 📊 Reporte de Inventario Actual
+//  Reporte de Inventario Actual
 // =======================================================
 export const getReporteInventario = async (format = 'json') => {
   try {
@@ -36,7 +36,7 @@ export const getReporteInventario = async (format = 'json') => {
     const response = await axios.get(url, authHeaders());
     return response.data;
   } catch (error) {
-    console.error("❌ Error al obtener reporte de inventario:", error);
+    console.error(" Error al obtener reporte de inventario:", error);
     if (error.response?.status === 401)
       throw new Error("Token inválido o expirado. Inicia sesión nuevamente.");
     throw error;
@@ -44,7 +44,7 @@ export const getReporteInventario = async (format = 'json') => {
 };
 
 // =======================================================
-// 🛒 Reporte de Ventas / Pedidos
+//  Reporte de Ventas / Pedidos
 // =======================================================
 export const getReportePedidos = async (format = 'json') => {
   try {
@@ -52,7 +52,7 @@ export const getReportePedidos = async (format = 'json') => {
     const response = await axios.get(url, authHeaders());
     return response.data;
   } catch (error) {
-    console.error("❌ Error al obtener reporte de pedidos:", error);
+    console.error(" Error al obtener reporte de pedidos:", error);
     if (error.response?.status === 401)
       throw new Error("Token inválido o expirado. Inicia sesión nuevamente.");
     throw error;
@@ -60,7 +60,7 @@ export const getReportePedidos = async (format = 'json') => {
 };
 
 // =======================================================
-// 🏷️ Reporte de Descuentos y Ofertas
+//  Reporte de Descuentos y Ofertas
 // =======================================================
 export const getReporteDescuentos = async (format = 'json') => {
   try {
@@ -68,7 +68,7 @@ export const getReporteDescuentos = async (format = 'json') => {
     const response = await axios.get(url, authHeaders());
     return response.data;
   } catch (error) {
-    console.error("❌ Error al obtener reporte de descuentos:", error);
+    console.error(" Error al obtener reporte de descuentos:", error);
     if (error.response?.status === 401)
       throw new Error("Token inválido o expirado. Inicia sesión nuevamente.");
     throw error;
@@ -76,7 +76,7 @@ export const getReporteDescuentos = async (format = 'json') => {
 };
 
 // =======================================================
-// ⭐ Reporte de Reseñas y Comentarios
+//  Reporte de Reseñas y Comentarios
 // =======================================================
 // Reporte de reseñas eliminado: endpoint retirado del backend
 
@@ -100,7 +100,7 @@ export const descargarReportePDF = async (tipoReporte) => {
     
     return true;
   } catch (error) {
-    console.error(`❌ Error al descargar reporte PDF (${tipoReporte}):`, error);
+    console.error(` Error al descargar reporte PDF (${tipoReporte}):`, error);
     throw error;
   }
 };
@@ -124,7 +124,7 @@ export const descargarReporteExcel = async (tipoReporte) => {
     
     return true;
   } catch (error) {
-    console.error(`❌ Error al descargar reporte Excel (${tipoReporte}):`, error);
+    console.error(` Error al descargar reporte Excel (${tipoReporte}):`, error);
     throw error;
   }
 };
@@ -138,7 +138,7 @@ export const getReportePreview = async (tipoReporte) => {
     const response = await axios.get(url, authHeaders());
     return response.data; // Retorna el HTML
   } catch (error) {
-    console.error(`❌ Error al obtener preview del reporte (${tipoReporte}):`, error);
+    console.error(` Error al obtener preview del reporte (${tipoReporte}):`, error);
     throw error;
   }
 };
