@@ -6,7 +6,7 @@ import {
   updatePromocion,
   getProducerProductsApi,
 } from "../services/dealService";
-import "../style/ofertas.css";
+import "../style/ofertasPro.css";
 
 const getTodayDate = () => new Date().toISOString().split("T")[0];
 const DEFAULT_IMAGE = "https://via.placeholder.com/150/f0f0f0?text=Producto";

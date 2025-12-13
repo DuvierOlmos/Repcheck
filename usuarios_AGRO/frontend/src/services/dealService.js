@@ -1,5 +1,5 @@
 // Producer-specific endpoints live under `ofertas-alt` (authenticated)
-const API_BASE_URL = "http://localhost:4000/api/ofertas-alt";
+const API_BASE_URL = "http://localhost:4000/api/ofertasPro";
 const PRODUCT_API_URL = "http://localhost:4000/api/productor";
 
 const getToken = () => localStorage.getItem("token");

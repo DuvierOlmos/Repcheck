@@ -4,9 +4,9 @@ const { verificarToken } = require("../utils/jwt");
 const {
   getAllPromocionesByProductorId,
   createDescuento,
-  updateDescuento,  
+  updateDescuento,
   deleteDescuento,
-} = require("../controllers/ofertasAdmin_Controller");
+} = require("../controllers/ofestas_controllesPro");
 
 router.get("/productor/:idProductor", verificarToken, getAllPromocionesByProductorId);
 router.post("/", verificarToken, createDescuento);

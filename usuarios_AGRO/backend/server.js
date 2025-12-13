@@ -12,8 +12,7 @@ const reviewRoutes = require("./routes/review_routes");
 const pqrsRoutes = require("./routes/pqrs_routes");
 
 const ofertasRoutes = require("./routes/ofertas_routes"); // ← TU RUTA CORRECTA (codigos, validar, productos)
-const ofertasAdminRoutes = require("./routes/ofertasAdmin_Routes"); // ← RUTA RENOMBRADA
-
+const ofertasProductor = require("./routes/ofertasRoutes");
 const descuentosRoutes = require("./routes/descuentos_routes");
 const ordenRoutes = require("./routes/ordenRoutes");
 const productorRoutes = require("./routes/productorRoutes");
@@ -114,9 +113,11 @@ app.get("/api/health", async (req, res) => {
 
 //  RUTAS OFICIALES DE OFERTAS (CLIENTE)
 app.use("/api/ofertas", ofertasRoutes);
-
-//  RUTAS ADMINISTRATIVAS DE OFERTAS (RENOMBRADAS)
-app.use("/api/admin/ofertas", ofertasAdminRoutes);
+app.use("/api/ofertasPro", ofertasProductor);
+app.use("/api/ofertas", ofertasRoutes);
+app.use("/api/descuentos", descuentosRoutes);
+app.use('/api/descuentos-alt', descuentoRoutes);
+app.use('/api/product-discounts', productoDescuentoRoutes);
 
 app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
